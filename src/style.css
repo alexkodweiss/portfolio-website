@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+
+/* Chromium / Safari — webkit pseudo-elements.
+   NOTE: Chromium (121+) ignores these on any element that has a non-auto
+   scrollbar-width / scrollbar-color, so those standard props are kept
+   Firefox-only below. */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-gray-800);
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #9ca3af;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Firefox — standard properties (no thumb shape control exists here) */
+@supports (-moz-appearance: none) {
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #d1d5db transparent;
+    }
+}
+
+/* ── Typography ────────────────────────────────────────────────────────────── */
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/inter/Inter-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("/fonts/inter/Inter-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/fonts/inter/Inter-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("/fonts/inter/Inter-Bold.ttf") format("truetype");
+}
+
+/* Make Inter the global default. Tailwind applies --font-sans to <html> in its
+   preflight, so overriding it here sets the font site-wide and for `font-sans`. */
+@theme {
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}

@@ -23,7 +23,7 @@ onMounted(() => {
     // any height/aspect ratio.
     const check = () => {
         if (!video.value) return
-        if (video.value.getBoundingClientRect().bottom <= (window.innerHeight + 100)) {
+        if (video.value.getBoundingClientRect().bottom <= window.innerHeight) {
             video.value.play().catch(() => {}) // ignore autoplay-policy rejections
             teardown()
         }

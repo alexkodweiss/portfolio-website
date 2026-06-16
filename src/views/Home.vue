@@ -86,7 +86,7 @@
                     <span class="text-base font-semibold bg-gray-900/20 backdrop-blur-sm px-1 rounded-sm">game logic</span>
                     <span class="text-base font-semibold bg-gray-900/20 backdrop-blur-sm px-1 rounded-sm">puzzle design</span>
                 </div>
-                <p class="text-base text-justify">Sandbox + puzzle game with track editor. In the puzzle game mode, players would conntect factories with cities with a limited set of track pieces at hand, while manouvering around obstacles and track pieces, which are already in place.</p>
+                <p class="text-base text-justify">Sandbox + puzzle game with track editor. In the puzzle game mode, players would connect factories with cities with a limited set of track pieces at hand, while manouvering around obstacles and track pieces, which are already in place.</p>
                 <p class="text-base text-justify">The sandbox game mode would allow players to freely place track pieces and decorative elements on a plain map and enjoy the aquarium effect of a busy railway network at toy scale.</p>
             </div>
         </section>

@@ -1,5 +1,4 @@
-# Builds the Vite site and publishes it to GitLab Pages on every push to the
-# default branch.
+# Builds the Vite site and publishes it to GitLab Pages on every push to main.
 image: node:22
 
 pages:
@@ -7,13 +6,11 @@ pages:
   script:
     - npm ci
     - npm run build
-    # SPA fallback: serve the app for unknown routes (e.g. refreshing /imprint).
-    - cp dist/index.html dist/404.html
-    # GitLab Pages serves the `public/` artifact; swap our build output in.
+    - cp dist/index.html dist/404.html  # SPA fallback for client-side routes
     - rm -rf public
     - mv dist public
   artifacts:
     paths:
       - public
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: '$CI_COMMIT_BRANCH == "main"'

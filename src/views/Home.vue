@@ -39,22 +39,9 @@
         <!--- Chevrolet --->
         <section
             id="chevrolet"
-            class="relative flex justify-center items-center h-screen bg-white text-gray-900"
+            class="relative flex flex-col justify-between h-screen bg-[#CACEC1] text-gray-900 overflow-hidden"
         >
-            <div class="grid grid-cols-12 w-full h-full">
-                <div class="col-span-12 relative overflow-hidden">
-                    <ModelViewer
-                        path="/models/chevrolet"
-                        :frames="128"
-                        :pad="3"
-                        ext="jpg"
-                        :reverse="true"
-                        align="left"
-                        alt="Chevrolet 3D model"
-                    />
-                </div>
-            </div>
-            <div class="absolute top-0 right-0 w-full lg:max-w-2xl flex flex-col items-start gap-5 text-gray-900 p-8 sm:p-12 lg:p-24 pointer-events-none">
+            <div class="w-full lg:max-w-2xl absolute top-0 right-0 lg:z-10 flex flex-col items-start gap-5 text-gray-900 p-8 sm:p-12 lg:p-24 lg:pointer-events-none z-10">
                 <h3 class="text-6xl sm:text-7xl font-bold">Vintage car</h3>
                 <div class="flex items-center gap-2 flex-wrap">
                     <span class="text-base font-semibold bg-gray-900/10 backdrop-blur-sm px-1 rounded-sm">3d modelling</span>
@@ -62,6 +49,17 @@
                     <span class="text-base font-semibold bg-gray-900/10 backdrop-blur-sm px-1 rounded-sm">vehicle physics</span>
                 </div>
                 <p class="text-base text-justify">I rigged and animated the car and made it fully drivable, with the vehicle physics and controls being inspired by Driver (1999). There were ambitions to use it in an escape-/heist-themed driving game, but I ended up discarding the idea. I am still happy with how the model turned out.</p>
+            </div>
+            <div class="absolute left-0 bottom-0 w-full min-w-[160vw] aspect-video overflow-hidden lg:inset-0 lg:aspect-auto lg:min-w-auto lg:h-full">
+                <ModelViewer
+                    path="/models/chevrolet"
+                    :frames="128"
+                    :pad="3"
+                    ext="jpg"
+                    :reverse="true"
+                    align="left"
+                    alt="Chevrolet 3D model"
+                />
             </div>
         </section>
         <!--- Chevrolet End --->
@@ -78,7 +76,7 @@
                     </video>
                 </div>
             </div>
-            <div class="lg:absolute bottom-0 left-0 lg:max-w-2xl lg:h-full flex flex-col items-start gap-5 text-gray-900 lg:bg-[#A4BD91]/50 lg:backdrop-blur-sm p-8 sm:p-12 lg:p-24">
+            <div class="lg:absolute bottom-0 left-0 lg:max-w-2xl lg:h-full flex flex-col items-start gap-5 text-gray-900 lg:bg-[#A4BD91]/50 lg:backdrop-blur-sm p-8 sm:p-12 lg:p-24 z-10">
                 <h3 class="text-6xl sm:text-8xl font-bold">Toy Trains</h3>
                 <div class="flex items-center gap-2 flex-wrap">
                     <span class="text-base font-semibold bg-gray-900/20 backdrop-blur-sm px-1 rounded-sm">track editor</span>
@@ -95,22 +93,9 @@
         <!--- Fighter Jet --->
         <section
             id="fighterjet"
-            class="relative flex justify-center items-center h-screen bg-white text-gray-900"
+            class="relative flex flex-col justify-between h-screen bg-[#9ACCD7] text-gray-900 overflow-hidden"
         >
-            <div class="grid grid-cols-12 w-full h-full">
-                <div class="col-span-12 relative overflow-hidden">
-                    <ModelViewer
-                        path="/models/mitsubishiF2"
-                        :frames="128"
-                        :pad="3"
-                        ext="jpg"
-                        :reverse="true"
-                        align="right"
-                        alt="Mitsubishi F-2 3D model"
-                    />
-                </div>
-            </div>
-            <div class="absolute top-0 left-0 w-full max-w-2xl flex flex-col items-start gap-5 text-gray-900 p-8 sm:p-12 lg:p-24">
+            <div class="w-full lg:max-w-2xl lg:absolute lg:top-0 lg:left-0 lg:z-10 flex flex-col items-start gap-5 text-gray-900 p-8 sm:p-12 lg:p-24 z-10">
                 <h3 class="text-6xl sm:text-7xl font-bold">Fighter Jet</h3>
                 <div class="flex items-center gap-2 flex-wrap">
                     <span class="text-base font-semibold bg-gray-900/10 backdrop-blur-sm px-1 rounded-sm">3d modelling</span>
@@ -118,22 +103,33 @@
                 </div>
                 <p class="text-base text-justify">Simple sunday study.</p>
             </div>
+             <div class="absolute right-0 bottom-0 w-full min-w-[160vw] aspect-video overflow-hidden lg:inset-0 lg:aspect-auto lg:min-w-auto lg:h-full">
+                <ModelViewer
+                    path="/models/mitsubishiF2"
+                    :frames="128"
+                    :pad="3"
+                    ext="jpg"
+                    :reverse="true"
+                    align="right"
+                    alt="Mitsubishi F-2 3D model"
+                />
+            </div>
         </section>
         <!--- Fighter Jet End --->
 
         <!--- Main Menu UI --->
         <section
-            id="mainmenuui"
+            id="mainmmenuui"
             class="relative flex flex-col lg:flex-row justify-center items-center h-screen bg-[#EEEAE4] text-gray-900 overflow-hidden"
         >
-            <div class="grid grid-cols-12 w-full lg:h-full">
+            <div class="grid grid-cols-12 w-full h-full">
                 <div class="col-span-12 relative">
-                    <video autoplay loop muted class="absolute left-1/2 bottom-0 -translate-x-1/2 min-w-full">
+                    <video autoplay loop muted class="absolute left-1/2 top-0 -translate-x-1/2 min-w-full">
                         <source src="/media/video/actiontanks_001.mp4">
                     </video>
                 </div>
             </div>
-            <div class="lg:absolute bottom-0 right-0 lg:max-w-xl h-full flex flex-col items-start gap-5 text-gray-900 lg:bg-[#EEEAE4]/50 lg:backdrop-blur-sm p-8 sm:p-12 lg:p-24">
+            <div class="lg:absolute bottom-0 right-0 lg:max-w-xl lg:h-full flex flex-col items-start gap-5 text-gray-900 lg:bg-[#EEEAE4]/50 lg:backdrop-blur-sm p-8 sm:p-12 lg:p-24 z-10">
                 <h3 class="text-6xl sm:text-8xl font-bold">Main menu UI</h3>
                 <div class="flex items-center gap-2 flex-wrap">
                     <span class="text-base font-semibold bg-gray-900/20 backdrop-blur-sm px-1 rounded-sm">UI design</span>

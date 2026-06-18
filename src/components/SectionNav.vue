@@ -38,7 +38,7 @@ onBeforeUnmount(() => observer?.disconnect());
     <button
         @click="go(active - 1)"
         :disabled="active === 0"
-        class="fixed top-4 left-1/2 -translate-x-1/2 z-50 size-10 flex items-center justify-center text-gray-900/50 hover:text-gray-900 bg-white/10 rounded-full cursor-pointer disabled:opacity-0 disabled:cursor-default"
+        class="fixed top-4 left-1/2 -translate-x-1/2 z-50 size-10 flex items-center justify-center text-gray-900/50 hover:text-gray-900 bg-white/10 backdrop-blur-sm rounded-full cursor-pointer disabled:opacity-0 disabled:cursor-default"
     >
         <svg
             width="48"
@@ -87,7 +87,7 @@ onBeforeUnmount(() => observer?.disconnect());
     <button
         @click="go(active + 1)"
         :disabled="active === count - 1"
-        class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 size-10 flex items-center justify-center text-gray-900/50 hover:text-gray-900 bg-white/10 rounded-full cursor-pointer disabled:opacity-0 disabled:cursor-default"
+        class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 size-10 flex items-center justify-center text-gray-900/50 hover:text-gray-900 bg-white/10 backdrop-blur-sm rounded-full cursor-pointer disabled:opacity-0 disabled:cursor-default"
     >
         <svg
             width="48"

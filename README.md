@@ -1,5 +1,67 @@
-# Vue 3 + Vite
+# Portfolio Website — alexkodweiss.me
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Personal portfolio of Alex Kodweiß. Built with **Vue 3 + Vite + Tailwind CSS v4**, hosted on **GitLab Pages**, domain via **Porkbun**.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+- **Live site:** https://alexkodweiss.me
+- **Repository:** `git@gitlab.com:prnzlsr1/portfolio-website.git`
+- **Hosting:** GitLab Pages (auto-deployed by CI on every push to `main`)
+
+---
+
+## Releasing a new version
+
+After making local changes, publishing is one step. The CI pipeline ([.gitlab-ci.yml](.gitlab-ci.yml)) automatically builds the site and deploys it to GitLab Pages on every push to `main`.
+
+### Option A — one command (quickest)
+
+```bash
+npm run deploy
+```
+
+This stages everything, commits with the message `"Update site"`, and pushes — which triggers the build + deploy.
+
+### Option B — manual (use when you want a descriptive commit message)
+
+```bash
+git add -A
+git commit -m "Describe what changed"
+git push
+```
+
+### What happens next
+
+1. The push starts a pipeline at **GitLab → Build → Pipelines**.
+2. The `pages` job runs `npm ci` + `npm run build`, then publishes the `dist/` output to GitLab Pages.
+3. The site is usually live in **~2–3 minutes**.
+
+### Verify the release
+
+1. Confirm the pipeline went **green** (GitLab → Build → Pipelines). If it failed, open the job log.
+2. **Hard-refresh** the site to bypass cache: `Ctrl + Shift + R` on https://alexkodweiss.me.
+3. For metadata / social-preview changes, re-check with a validator (e.g. https://www.opengraph.xyz) since link previews are cached externally.
+
+> **Note:** errors only surface when the pipeline runs, not locally during commit — so always glance at the pipeline status after deploying. Run `npm run build` locally first if you want to catch build errors before pushing.
+
+---
+
+## Local development
+
+```bash
+npm install      # first time, or after dependency changes
+npm run dev      # start the dev server (hot reload) at http://localhost:5173
+npm run build    # produce a production build in dist/ (what CI runs)
+npm run preview  # serve the production build locally to sanity-check it
+```
+
+---
+
+## Project notes
+
+- **Source vs. deployed assets:** working/raw files live in `_resource/` (git-ignored — keep your own backups). Everything the live site needs is in `src/` and `public/`.
+- **3D model viewers:** the `ModelViewer` component flips through pre-rendered JPG frames in `public/models/<name>/` (`frame000.jpg`, `frame001.jpg`, …). To update a model, record a steady-rotation video, extract frames with ffmpeg, drop them into the model's folder, and set `:frames` on the component to the new count.
+- **Autoplay videos:** `public/media/video/` — keep them web-optimized (re-encode oversized exports; ~1080p at a sane bitrate). The `AutoplayVideo` component plays each video once its bottom edge scrolls into view.
+- **Fonts & icons** are self-hosted (Inter in `public/fonts/`, Boxicons via npm) — no third-party CDN calls, which keeps the privacy footprint minimal.
+
+## SPA routing on GitLab Pages
+
+The app uses Vue Router in history mode. `public/_redirects` and a CI-generated `404.html` (a copy of `index.html`) make deep links like `/imprint` and `/privacy-policy` work on refresh.

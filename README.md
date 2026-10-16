@@ -1,16 +1,17 @@
 # Portfolio Website — alexkodweiss.me
 
-Personal portfolio of Alex Kodweiß. Built with **Vue 3 + Vite + Tailwind CSS v4**, hosted on **GitLab Pages**, domain via **Porkbun**.
+Personal portfolio of Alex Kodweiß. Built with **Vue 3 + Vite + Tailwind CSS v4**, hosted on **GitHub Pages**, domain via **Porkbun**.
 
 - **Live site:** https://alexkodweiss.me
-- **Repository:** `git@gitlab.com:prnzlsr1/portfolio-website.git`
-- **Hosting:** GitLab Pages (auto-deployed by CI on every push to `main`)
+- **Repository:** https://github.com/alexkodweiss/portfolio-website (remote `origin`)
+- **Hosting:** GitHub Pages (auto-deployed by GitHub Actions on every push to `main`)
+- **Old repository:** `git@gitlab.com:prnzlsr1/portfolio-website.git` (remote `gitlab`, previous GitLab Pages hosting)
 
 ---
 
 ## Releasing a new version
 
-After making local changes, publishing is one step. The CI pipeline ([.gitlab-ci.yml](.gitlab-ci.yml)) automatically builds the site and deploys it to GitLab Pages on every push to `main`.
+After making local changes, publishing is one step. The workflow ([.github/workflows/deploy.yml](.github/workflows/deploy.yml)) automatically builds the site and deploys it to GitHub Pages on every push to `main`.
 
 ### Option A — one command (quickest)
 
@@ -30,17 +31,17 @@ git push
 
 ### What happens next
 
-1. The push starts a pipeline at **GitLab → Build → Pipelines**.
-2. The `pages` job runs `npm ci` + `npm run build`, then publishes the `dist/` output to GitLab Pages.
+1. The push starts a workflow run at **GitHub → Actions**.
+2. The `build` job runs `npm ci` + `npm run build`, then the `deploy` job publishes the `dist/` output to GitHub Pages.
 3. The site is usually live in **~2–3 minutes**.
 
 ### Verify the release
 
-1. Confirm the pipeline went **green** (GitLab → Build → Pipelines). If it failed, open the job log.
+1. Confirm the workflow run went **green** (GitHub → Actions). If it failed, open the job log.
 2. **Hard-refresh** the site to bypass cache: `Ctrl + Shift + R` on https://alexkodweiss.me.
 3. For metadata / social-preview changes, re-check with a validator (e.g. https://www.opengraph.xyz) since link previews are cached externally.
 
-> **Note:** errors only surface when the pipeline runs, not locally during commit — so always glance at the pipeline status after deploying. Run `npm run build` locally first if you want to catch build errors before pushing.
+> **Note:** errors only surface when the pipeline runs, not locally during commit — so always glance at the workflow status after deploying. Run `npm run build` locally first if you want to catch build errors before pushing.
 
 ---
 
@@ -62,6 +63,6 @@ npm run preview  # serve the production build locally to sanity-check it
 - **Autoplay videos:** `public/media/video/` — keep them web-optimized (re-encode oversized exports; ~1080p at a sane bitrate). The `AutoplayVideo` component plays each video once its bottom edge scrolls into view.
 - **Fonts & icons** are self-hosted (Inter in `public/fonts/`, Boxicons via npm) — no third-party CDN calls, which keeps the privacy footprint minimal.
 
-## SPA routing on GitLab Pages
+## SPA routing on GitHub Pages
 
-The app uses Vue Router in history mode. `public/_redirects` and a CI-generated `404.html` (a copy of `index.html`) make deep links like `/imprint` and `/privacy-policy` work on refresh.
+The app uses Vue Router in history mode. A CI-generated `404.html` (a copy of `index.html`) makes deep links like `/imprint` and `/privacy-policy` work on refresh.
